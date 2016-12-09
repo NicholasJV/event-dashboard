@@ -6,6 +6,7 @@ import Form from './Form'
 import logo from './logo.svg';
 import fetchEvents from './event-api.js'
 import List from './List'
+import localData from './local-data'
 
 class App extends Component {
   constructor(){
@@ -15,9 +16,11 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetchEvents().then((events) => {
-      this.setState({ events: events })
-    })
+    // fetchEvents().then((events) => {
+    //   this.setState({ events: events })
+    // })
+    console.log('LOADING LOCAL DATA COPY - CHANGE TO API CALL')
+    this.setState({ events: localData.results })
   }
 
   handleCreateEvent(title, start, end){

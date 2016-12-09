@@ -2,19 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import Search from './Search'
 import Event from './Event'
 
-// const Event = (props) => (
-//   <div>
-//     <h3>{props.title}</h3>
-//     <p>start: {props.startTime}</p>
-//     <p>end: {props.endTime}</p>
-//   </div>
-// )
-
 class List extends Component {
   constructor() {
     super()
-    // console.log('this.props in List constructor:', this.props)
-    this.state = { searchTerm: '' }
+    this.state = { searchTerm: '' , sortedBy: 'title'}
+    this._handleSearchTerm = this._handleSearchTerm.bind(this)
+    this._handleSortValue = this._handleSortValue.bind(this)
+    this._sort = this._sort.bind(this)
   }
 
   componentWillReceiveProps(nextProps){
@@ -25,22 +19,47 @@ class List extends Component {
     this.setState({ searchTerm: searchTerm })
   }
 
+  _handleSortValue(e){
+    console.log('sort event value:', e.target.value)
+    this.setState({sortedBy: e.target.value})
+  }
+
   _filterBySearchTerm(events){
     return events.filter(
       (event) => event.title.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
     )
   }
 
+  _sort(events){
+    console.log('events to sort:', events)
+    let sortType = this.state.sortedBy
+    console.log('sortType', sortType)
+    switch (sortType) {
+      case 'title': {
+        return events.sort((A, B) => A[sortType] >= B[sortType] )
+      }
+      case 'start_time': {
+        return events.sort((A, B) => A[sortType] > B[sortType])
+      }
+    }
+  }
+
   render(){
     return (
       <div className="event-list">
-        <Search handleSearchTerm={this._handleSearchTerm.bind(this)}/>
+        <Search handleSearchTerm={this._handleSearchTerm}/>
         <br/>
+        <select value={this.state.sortedBy} id="sort-select" onChange={this._handleSortValue}>
+          <option value="title">Title</option>
+          <option value="start_time">Date</option>
+        </select>
         <h2>Events</h2>
-        {this._filterBySearchTerm(this.props.events)
-          .map((event) => (
-            <Event {...event} startTime={event.start_time} endTime={event.end_time} key={event.id} />
-        ))}
+        <div className="container">
+          {this._sort(this._filterBySearchTerm(this.props.events))
+            .map((event) => (
+              <Event {...event} startTime={event.start_time} endTime={event.end_time} key={event.id} />
+          ))}
+        </div>
       </div>
     )
   }

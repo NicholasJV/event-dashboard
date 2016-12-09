@@ -18,6 +18,7 @@ body {
 .search-component {
   border: 1px dashed red;
   padding: 10px;
+  float: left;
 }
 
 .event {

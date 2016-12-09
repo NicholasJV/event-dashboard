@@ -15,7 +15,7 @@ class Search extends Component {
   render(){
     return (
       <div className="search-component">
-        <span>Search Events: </span>
+        <label htmlFor="search">Search:</label>
         <input type="text" name="searchTerm"
           value={this.state.searchTerm}
           onChange={this.handleChange.bind(this)}
