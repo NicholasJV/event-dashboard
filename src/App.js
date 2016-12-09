@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import 'whatwg-fetch'
 import './App.css';
-import logo from './logo.svg';
 import Search from './Search'
 import Form from './Form'
-import { events as testEvents } from './testData'
+import logo from './logo.svg';
+import fetchEvents from './event-api.js'
+import List from './List'
 
 class App extends Component {
   constructor(){
@@ -13,26 +15,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({ events: testEvents })
-
-    // replace with API request
-
+    fetchEvents().then((events) => {
+      this.setState({ events: events })
+    })
   }
 
-  handleCreateEvent(name, start, end){
-    // would save state if updating remotely:
+  handleCreateEvent(title, start, end){
+    // if updating remote data, save state in case of error:
     /* let prevState = this.state */
-    let newEvent = { id: Date.now(), name: name, start: start, end: end }
-    // using concat() because it's non-destructive (treat state as immutable)
-    console.log(this.state.events)
+    let newEvent = { id: Date.now(), title: title, start_time: start, end_time: end }
     let newEventList = this.state.events.concat(newEvent)
-    // setState triggers a re-render
     this.setState({ events: newEventList })
-
-    console.log('=-=-=-=-=   NEW EVENT: ', name, '  end', end, '  start', start)
-    console.log('newEvents: ', newEventList)
-    console.log('App.state after update:', this.state)
-
   }
 
   render() {
@@ -43,14 +36,14 @@ class App extends Component {
           <h2>Eventable Dashboard</h2>
         </div>
         <div className="App-intro">
-          <Search events={this.state.events}/>
-          <br/>
+          <List events={this.state.events} />
           <Form newEvent={this.handleCreateEvent}/>
         </div>
       </div>
     );
   }
-}
+
+} // end App component
 
 App.propTypes = {
   name: PropTypes.string

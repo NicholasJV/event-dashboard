@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+// import { Button, FormControl, FormGroup } from 'react-bootstrap'
 
 class Form extends Component {
   constructor(props){
@@ -15,14 +16,19 @@ class Form extends Component {
 
   render() {
     return (
-      <form action="" onSubmit={this._handleSubmit}>
-        <input type="text" name="title" placeholder="Event Name" />
-        <br/>
-        <input type="text" name="start" placeholder="Start Date"/>
-        <input type="text" name="end" placeholder="Start Date"/>
-        <br/>
-        <button type="submit" name="create"> Create New Event </button>
-      </form>
+      <div className="new-event">
+        <form action="" onSubmit={this._handleSubmit}>
+          {/* <FormGroup controlId="formNewEvent" /> */}
+          <input type="text" name="title" placeholder="Event Name" />
+          <br/>
+          <label htmlFor="start_time">Start:</label>
+          <input type="text" name="start" placeholder="start date/time"/>
+          <br/>
+          <input type="text" name="end" placeholder="Start Date"/>
+          <br/>
+          <button type="submit" name="create"> Create New Event </button>
+        </form>
+      </div>
 
     )
   }
