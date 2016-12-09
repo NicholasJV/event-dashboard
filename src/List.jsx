@@ -33,15 +33,7 @@ class List extends Component {
   _sort(events){
     console.log('events to sort:', events)
     let sortType = this.state.sortedBy
-    console.log('sortType', sortType)
-    switch (sortType) {
-      case 'title': {
-        return events.sort((A, B) => A[sortType] >= B[sortType] )
-      }
-      case 'start_time': {
-        return events.sort((A, B) => A[sortType] > B[sortType])
-      }
-    }
+    return events.sort((A, B) => A[sortType] > B[sortType] )
   }
 
   render(){
@@ -49,6 +41,7 @@ class List extends Component {
       <div className="event-list">
         <Search handleSearchTerm={this._handleSearchTerm}/>
         <br/>
+        <span>sort by: &nbsp;</span>
         <select value={this.state.sortedBy} id="sort-select" onChange={this._handleSortValue}>
           <option value="title">Title</option>
           <option value="start_time">Date</option>
