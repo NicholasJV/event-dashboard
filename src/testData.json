@@ -1,0 +1,18 @@
+{
+  "events": [{
+      "id": "whitney",
+      "name": "Whitney Biennial",
+      "startDate": "2016-07-01T00:00:00-06:00",
+      "endDate": "2016-07-20T00:00:00-06:00"
+    }, {
+      "id": "bruce",
+      "name": "Brucennial",
+      "startDate": "2018-9-11T00:00:00-18:00",
+      "endDate": "2018-9-20T00:00:00-18:00"
+    }, {
+      "id": "wolves",
+      "name": "Chances with Wolves Reunion",
+      "startDate": "2017-9-19T00:00:00-18:00",
+      "endDate": "2017-9-20T00:00:00-18:00"
+    }]
+}
