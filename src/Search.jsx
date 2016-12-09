@@ -13,18 +13,17 @@ const Event = (props) => (
 class Search extends Component {
   constructor(){
     super()
-    this.state = { filterText: '', searchTerm: '' }
+    this.state = { searchTerm: '' }
   }
 
   handleChange(e){
     this.setState({searchTerm: e.target.value})
-    // call search handler from list
-    // this.props.handleSearchTerm(this.state.searchTerm)
+    this.props.handleSearchTerm(e.target.value)
   }
 
   render(){
     return (
-      <div>
+      <div className="search-component">
         <span>Search Events: </span>
         <input type="text" name="searchTerm"
           value={this.state.searchTerm}

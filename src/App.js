@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import 'whatwg-fetch'
 import './App.css';
-import Search from './Search'
+// import Search from './Search'
 import Form from './Form'
 import logo from './logo.svg';
 import fetchEvents from './event-api.js'
