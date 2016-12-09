@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 
-// 'pure' or 'dumb' component in that it has no state; just displays
+// 'pure' or 'dumb' component to simply display data
 const Event = (props) => (
   <div>
     <h3>{props.name}</h3>
-    <p>{props.startDate}</p>
-    <p>{props.endDate}</p>
+    <p>{props.start}</p>
+    <p>{props.end}</p>
   </div>
 )
 

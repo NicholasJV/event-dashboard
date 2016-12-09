@@ -3,7 +3,7 @@ import './App.css';
 import logo from './logo.svg';
 import Search from './Search'
 import Form from './Form'
-import testData from './testData'
+import { events as testEvents } from './testData'
 
 class App extends Component {
   constructor(){
@@ -13,20 +13,25 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // API request here
+    this.setState({ events: testEvents })
+
+    // replace with API request
 
   }
 
   handleCreateEvent(name, start, end){
-    let prevState = this.state
-    let newEvent = {}
-    // using concat() because it's non-destructive
-    let newEventList = this.state.events
-    // mutate the state using a React method, rather than directly:
-    this.setState({events: newEvents})
+    // would save state if updating remotely:
+    /* let prevState = this.state */
+    let newEvent = { id: Date.now(), name: name, start: start, end: end }
+    // using concat() because it's non-destructive (treat state as immutable)
+    console.log(this.state.events)
+    let newEventList = this.state.events.concat(newEvent)
+    // setState triggers a re-render
+    this.setState({ events: newEventList })
 
-
-    // console.log('=-=-=-=-=   NEW EVENT: ', name, '  end', end, '  start', start
+    console.log('=-=-=-=-=   NEW EVENT: ', name, '  end', end, '  start', start)
+    console.log('newEvents: ', newEventList)
+    console.log('App.state after update:', this.state)
 
   }
 
@@ -38,7 +43,7 @@ class App extends Component {
           <h2>Eventable Dashboard</h2>
         </div>
         <div className="App-intro">
-          <Search events={testData.events}/>
+          <Search events={this.state.events}/>
           <br/>
           <Form newEvent={this.handleCreateEvent}/>
         </div>

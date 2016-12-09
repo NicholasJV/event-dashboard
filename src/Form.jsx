@@ -10,6 +10,7 @@ class Form extends Component {
     e.preventDefault()
     let newEvent = e.target
     this.props.newEvent(newEvent.title.value, newEvent.start.value, newEvent.end.value)
+    newEvent.title.value = newEvent.start.value = newEvent.end.value = ''
   }
 
   render() {
@@ -20,7 +21,7 @@ class Form extends Component {
         <input type="text" name="start" placeholder="Start Date"/>
         <input type="text" name="end" placeholder="Start Date"/>
         <br/>
-        <button type="submit" name="newEvent"> Create New Event </button>
+        <button type="submit" name="create"> Create New Event </button>
       </form>
 
     )
