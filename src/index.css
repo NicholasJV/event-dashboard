@@ -10,8 +10,17 @@ body {
   overflow:auto;
 }*/
 
+.event-list {
+  border: 1px dashed blue;
+  padding: 10px;
+}
+
 .search-component {
-  border-color: red;
-  border-radius: 1px;
-  border-style: dashed;
+  border: 1px dashed red;
+  padding: 10px;
+}
+
+.event {
+  border: 1px dashed purple;
+  padding: 10px;
 }
