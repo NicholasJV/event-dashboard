@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import 'whatwg-fetch'
 import './App.css';
 import EventForm from './EventForm'
+import List from './List'
+
 import logo from './logo.svg';
 import fetchEvents from './event-api.js'
-import List from './List'
 // import localData from './local-data'
 
 class App extends Component {
@@ -47,7 +48,7 @@ class App extends Component {
     );
   }
 
-} // end App component
+}
 
 App.propTypes = {
   name: PropTypes.string

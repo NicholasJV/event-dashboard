@@ -8,10 +8,6 @@ class EventForm extends Component {
   }
 
   _handleSubmit(e){
-    // e.preventDefault()
-    console.log('submitted event:', e)
-    console.log(e.title)
-    console.log('this.refs.newEventTitle', this.refs.newEventTitle.value)
     let newEvent = e.target
     console.log(newEvent.title.value, newEvent.start.value, newEvent.end.value)
     this.props.newEvent(newEvent.title.value, newEvent.start.value, newEvent.end.value)
@@ -37,14 +33,6 @@ class EventForm extends Component {
             <ControlLabel htmlFor="end">End: </ControlLabel>
             <FormControl type="text" name="end" placeholder="date/time" />
             <Button className="add-button" type="submit" name="create"> &#43; </Button>
-
-            {/* <input type="text" name="title" placeholder="Event Name" />
-            <br/> */}
-            {/* <label htmlFor="start_time">Start: </label>
-            <input type="text" name="start" placeholder="YYYY-MM-DD T00:00"/>
-            <br/>
-            <label htmlFor="start_time">End: </label>
-            <input type="text" name="end" placeholder="Start Date"/>
             <br/> */}
           </FormGroup>
         </form>

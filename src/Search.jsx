@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-// import { Button, FormControl, FormGroup } from 'react-bootstrap'
 
 class Search extends Component {
   constructor(){
@@ -27,7 +26,7 @@ class Search extends Component {
 
 Search.propTypes = {
   events: PropTypes.array
-  // handleSearchTerm: PropTypes.function
+  handleSearchTerm: PropTypes.function
 }
 
 export default Search
