@@ -33,7 +33,7 @@ class EventForm extends Component {
             <ControlLabel htmlFor="end">End: </ControlLabel>
             <FormControl type="text" name="end" placeholder="date/time" />
             <Button className="add-button" type="submit" name="create"> &#43; </Button>
-            <br/> */}
+            <br/>
           </FormGroup>
         </form>
       </div>

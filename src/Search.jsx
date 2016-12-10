@@ -25,7 +25,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  events: PropTypes.array
+  events: PropTypes.array,
   handleSearchTerm: PropTypes.function
 }
 
