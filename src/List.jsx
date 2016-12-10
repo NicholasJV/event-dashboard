@@ -20,7 +20,6 @@ class List extends Component {
   }
 
   _handleSortValue(e){
-    console.log('sort event value:', e.target.value)
     this.setState({sortedBy: e.target.value})
   }
 
@@ -31,7 +30,6 @@ class List extends Component {
   }
 
   _sort(events){
-    console.log('events to sort:', events)
     let sortType = this.state.sortedBy
     return events.sort((A, B) => A[sortType] > B[sortType] )
   }

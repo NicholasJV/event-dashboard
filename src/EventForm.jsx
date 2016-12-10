@@ -9,7 +9,6 @@ class EventForm extends Component {
 
   _handleSubmit(e){
     let newEvent = e.target
-    console.log(newEvent.title.value, newEvent.start.value, newEvent.end.value)
     this.props.newEvent(newEvent.title.value, newEvent.start.value, newEvent.end.value)
     newEvent.title.value = newEvent.start.value = newEvent.end.value = ''
     e.preventDefault()
